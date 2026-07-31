@@ -1,0 +1,28 @@
+name: Validate Setup
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install validation tools
+        run: python3 -m pip install --user pre-commit
+
+      - name: Run pre-commit
+        run: python3 -m pre_commit run --all-files
+
+      - name: Check installer syntax
+        run: bash -n install.sh
+
+      - name: Check installer dry run
+        run: HOME="$RUNNER_TEMP/home" ./install.sh --dry-run --no-brew --no-zshrc --with-claude-skills
+
+      - name: Validate skill lock
+        run: node scripts/validate-skill-lock.mjs
