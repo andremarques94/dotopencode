@@ -1,0 +1,2 @@
+# Copy to shell/opencode.local.zsh and fill in local values.
+export CONTEXT7_API_KEY=""

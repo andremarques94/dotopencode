@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+.config/opencode/node_modules/
+.config/opencode/package.json
+.config/opencode/package-lock.json
+.config/opencode/bun.lock
+.config/opencode/.skill-lock.json
+
+# Local secrets
+shell/opencode.local.zsh
+*.local
+*.secret
+.env
+.env.*
+!.env.example
+
+# Local/generated data
+.local/
+.cache/
+tool-output/
+
+# OS/editor
+.DS_Store
+*.swp
+*.swo

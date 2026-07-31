@@ -1,0 +1,8 @@
+brew "opencode"
+brew "git"
+brew "gh"
+brew "ripgrep"
+brew "fd"
+brew "jq"
+brew "gitleaks"
+brew "pre-commit"
