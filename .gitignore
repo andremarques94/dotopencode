@@ -17,6 +17,7 @@ shell/opencode.local.zsh
 # Local/generated data
 .local/
 .cache/
+.tmp/
 tool-output/
 
 # OS/editor
