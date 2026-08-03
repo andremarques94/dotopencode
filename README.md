@@ -1,24 +1,20 @@
 # opencode-setup
 
-Reusable opencode and Agent Skills setup for new machines.
+A portable OpenCode environment for macOS. It keeps shared configuration, skills, shell setup, and bootstrap tooling in one repository.
 
-## What This Manages
+## Features
 
-- Global opencode config in `.config/opencode`
-- Portable Agent Skills in `.agents/skills`
-- Skill install metadata in `.agents/.skill-lock.json`
-- Shell environment snippets in `shell`
-- Bootstrap tooling with `install.sh` and `Brewfile`
+| Feature | What it provides |
+| --- | --- |
+| Shared OpenCode config | Global defaults, permissions, MCP definitions, and agent guidance in `.config/opencode`. |
+| Portable skills | A versioned skill library in `.agents/skills`, available to OpenCode after installation. |
+| Local overrides | Git-ignored files for machine-specific secrets, providers, and MCP servers. |
+| Shell setup | Zsh environment settings and an `OPENCODE_CONFIG` override for local OpenCode config. |
+| Bootstrap tooling | Homebrew dependencies, safe symlink setup, optional Claude Code skill support, and pre-commit hook installation. |
 
-## New Machine Setup
+## Install
 
-Install Homebrew first if it is missing:
-
-```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-Clone this repo and run the installer:
+Install Homebrew if needed, then clone the repository and run the installer:
 
 ```sh
 git clone git@github.com:<you>/opencode-setup.git "$HOME/opencode-setup"
@@ -26,115 +22,65 @@ cd "$HOME/opencode-setup"
 ./install.sh
 ```
 
-Fill local secrets:
+Add machine-local secrets, authenticate with the model providers you use, then restart the shell:
 
 ```sh
 $EDITOR "$HOME/opencode-setup/shell/opencode.local.zsh"
-```
-
-Login to model providers on each machine:
-
-```sh
 opencode auth login
-```
-
-Restart your shell or run:
-
-```sh
 source ~/.zshrc
 ```
 
-## Symlinks
-
-The installer creates these symlinks:
+The installer creates these links:
 
 ```text
 ~/.config/opencode -> <repo>/.config/opencode
 ~/.agents -> <repo>/.agents
 ```
 
-Use Claude Code skills too:
+To share the same skills with Claude Code, install with:
 
 ```sh
 ./install.sh --with-claude-skills
 ```
 
-This additionally creates:
+This also links `~/.claude/skills` to `.agents/skills`.
 
-```text
-~/.claude/skills -> <repo>/.agents/skills
-```
+## Configuration
 
-## Installing Skills
+| Scope | File | Purpose |
+| --- | --- | --- |
+| Shared | `.config/opencode/opencode.jsonc` | Committed OpenCode defaults and disabled-by-default MCP definitions. |
+| Shared | `.config/opencode/AGENTS.md` | Global engineering and Git working rules. |
+| Local | `.config/opencode/opencode.local.jsonc` | Git-ignored provider, agent, and MCP overrides. Created from the example during installation. |
+| Local | `shell/opencode.local.zsh` | Git-ignored environment variables and secrets. Created from the example during installation. |
 
-Because `~/.agents` is symlinked into this repo, global skill installs update the repo-backed skills directory and lock file:
+`shell/opencode.zsh` exports the local config through `OPENCODE_CONFIG`, which OpenCode merges after the shared configuration. Restart OpenCode after changing a configuration file, agent file, or skill.
 
-```sh
-npx skills@latest add owner/repo -g
-```
+Keep secrets in local files only. The shared Context7 configuration reads `CONTEXT7_API_KEY` from the environment.
 
-The canonical layout is:
+## Skills
 
-```text
-.agents/.skill-lock.json
-.agents/skills/<skill-name>/SKILL.md
-```
+Installed skills live in `.agents/skills`, and `.agents/.skill-lock.json` records their source and version metadata. OpenCode discovers these through the `~/.agents` link.
 
-## Secrets
+See [SKILLS.md](SKILLS.md) for the available skills, when to use each one, and how to maintain the catalog.
 
-Do not commit secrets. Put machine-local secrets in:
-
-```text
-shell/opencode.local.zsh
-```
-
-The committed config reads Context7 from:
-
-```text
-CONTEXT7_API_KEY
-```
-
-If a real key was ever committed or pushed, rotate it.
-
-## Machine-Local OpenCode Overrides
-
-Machine-specific OpenCode settings live in the Git-ignored file:
-
-```text
-.config/opencode/opencode.local.jsonc
-```
-
-`install.sh` creates it from `.config/opencode/opencode.local.jsonc.example`.
-The shell setup exports it through `OPENCODE_CONFIG`, so OpenCode loads it after
-the shared global config and merges object settings such as `mcp`, `agent`, and
-`provider`. This lets local MCP servers coexist with the shared servers and lets
-you override individual fields, such as enabling a shared server.
-
-Restart your shell after changing the local config setup, and restart OpenCode
-after changing either config file.
-
-## Updating
+## Update And Verify
 
 ```sh
-cd "$HOME/opencode-setup"
 git pull
 ./install.sh
-```
-
-## Validation
-
-```sh
 opencode debug config
+node scripts/validate-skill-lock.mjs
 brew bundle check --file Brewfile
 gitleaks dir .
 pre-commit run --all-files
 ```
 
-## Installer Flags
+## Installer Options
 
-```sh
-./install.sh --no-brew
-./install.sh --no-zshrc
-./install.sh --dry-run
-./install.sh --with-claude-skills
-```
+| Option | Effect |
+| --- | --- |
+| `--no-brew` | Skip Homebrew dependency installation. |
+| `--no-zshrc` | Do not add or update the managed Zsh configuration block. |
+| `--dry-run` | Print actions without changing files. |
+| `--with-claude-skills` | Link the shared skills for Claude Code. |
