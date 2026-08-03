@@ -84,6 +84,11 @@ if [ ! -f "$REPO_DIR/shell/opencode.local.zsh" ]; then
   run cp "$REPO_DIR/shell/opencode.local.zsh.example" "$REPO_DIR/shell/opencode.local.zsh"
 fi
 
+if [ ! -f "$REPO_DIR/.config/opencode/opencode.local.jsonc" ]; then
+  printf 'Creating local OpenCode config from example.\n'
+  run cp "$REPO_DIR/.config/opencode/opencode.local.jsonc.example" "$REPO_DIR/.config/opencode/opencode.local.jsonc"
+fi
+
 if [ "$NO_ZSHRC" -eq 0 ]; then
   ZSHRC="$HOME/.zshrc"
   START_MARKER="# >>> opencode-setup >>>"

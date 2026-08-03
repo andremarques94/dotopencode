@@ -96,6 +96,23 @@ CONTEXT7_API_KEY
 
 If a real key was ever committed or pushed, rotate it.
 
+## Machine-Local OpenCode Overrides
+
+Machine-specific OpenCode settings live in the Git-ignored file:
+
+```text
+.config/opencode/opencode.local.jsonc
+```
+
+`install.sh` creates it from `.config/opencode/opencode.local.jsonc.example`.
+The shell setup exports it through `OPENCODE_CONFIG`, so OpenCode loads it after
+the shared global config and merges object settings such as `mcp`, `agent`, and
+`provider`. This lets local MCP servers coexist with the shared servers and lets
+you override individual fields, such as enabling a shared server.
+
+Restart your shell after changing the local config setup, and restart OpenCode
+after changing either config file.
+
 ## Updating
 
 ```sh
