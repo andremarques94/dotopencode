@@ -6,3 +6,7 @@ export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
 if [ -n "${OPENCODE_SETUP_DIR:-}" ] && [ -f "$OPENCODE_SETUP_DIR/shell/opencode.local.zsh" ]; then
   source "$OPENCODE_SETUP_DIR/shell/opencode.local.zsh"
 fi
+
+if [ -n "${OPENCODE_SETUP_DIR:-}" ] && [ -f "$OPENCODE_SETUP_DIR/.config/opencode/opencode.local.jsonc" ]; then
+  export OPENCODE_CONFIG="$OPENCODE_SETUP_DIR/.config/opencode/opencode.local.jsonc"
+fi

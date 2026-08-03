@@ -1,0 +1,6 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  // Machine- or company-specific settings. This file is merged after the
+  // shared opencode.jsonc through OPENCODE_CONFIG.
+  // Add local-only MCP servers or override fields on shared servers here.
+}
