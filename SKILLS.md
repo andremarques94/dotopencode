@@ -8,12 +8,17 @@ Name a skill in your request when you want to guarantee its use. Other skills ma
 
 | Skill | Use it for | Invocation |
 | --- | --- | --- |
-| `backend-development` | Backend APIs, data stores, authentication, security, testing, operations, and performance. | Automatic or named |
-| `code-review` | Reviewing changes against a branch, commit, tag, or merge base and the relevant specification. | Automatic or named; provide a fixed point |
-| `codebase-design` | Improving module boundaries, interfaces, seams, and testability. | Automatic or named |
-| `deslop` | Removing generated clutter while preserving behavior. | Automatic or named |
-| `domain-modeling` | Establishing domain language, `CONTEXT.md`, and qualifying architectural decisions. | Automatic or named |
-| `nestjs-best-practices` | Writing, reviewing, or refactoring NestJS applications. | Automatic or named |
+| `backend-development` | APIs, authentication, databases, security, performance, testing, and deployment. | "Use `backend-development` to design a REST API with JWT authentication." |
+| `code-review` | Two-axis review of a branch, PR, or worktree against a fixed point and specification. | "Use `code-review` to review changes since `main`." A fixed point is required. |
+| `codebase-design` | Designing or reshaping module interfaces, seams, depth, and testability. | "Use `codebase-design` to redesign the payment module interface." |
+| `code-security` | Secure-code guidance across common languages, OWASP risks, and infrastructure. | "Use `code-security` to review this authentication change." |
+| `deslop` | Removing AI-generated code clutter while preserving behavior. | "Use `deslop` to clean up AI-generated code in this branch." |
+| `domain-modeling` | Establishing domain terminology, maintaining `CONTEXT.md`, and recording qualifying ADRs. | "Use `domain-modeling` to define the order cancellation terminology." |
+| `find-skills` | Finding and installing an additional skill from the skills ecosystem. | "Use `find-skills` to find a Playwright testing skill." |
+| `grilling` | Stress-testing a plan, decision, or idea through a one-question-at-a-time interview. | "Use `grilling` to stress-test my authentication design." |
+| `nestjs-best-practices` | Writing, reviewing, or refactoring NestJS applications. | "Use `nestjs-best-practices` to review this NestJS module." |
+| `research` | Researching a topic from primary sources and saving cited findings in the repository. | "Use `research` to investigate the current OAuth 2.1 PKCE requirements." |
+| `skill-creator` | Creating, evaluating, improving, or packaging skills. | "Use `skill-creator` to create a release-notes skill." |
 
 ## Planning And Research
 
