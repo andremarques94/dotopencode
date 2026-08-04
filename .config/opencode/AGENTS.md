@@ -16,6 +16,12 @@
 - Keep secrets out of tracked files, command output, and responses.
 - Run the narrowest relevant checks after a change. Clearly state when verification was not run or could not be completed.
 
+## MCP Use
+
+- Use Context7 for version-specific library, framework, SDK, or API documentation, setup, configuration, and migration questions. Prefer first-party sources when Context7 does not cover the needed documentation.
+- Use `gh_grep` for public implementation examples or to check prevailing API usage. Do not use it to search code already in this workspace.
+- Use Chrome DevTools only for browser-visible behavior: reproducing UI bugs, inspecting console or network errors, validating user flows, layout debugging, or performance traces. Do not start it for backend-only work.
+
 ## Git Safety
 
 - Do not commit, amend, push, reset, or discard changes unless the user explicitly asks.

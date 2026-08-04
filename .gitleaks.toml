@@ -1,0 +1,10 @@
+title = "Repository Gitleaks configuration"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Documentation examples in the code-security skill"
+paths = [
+  '''^\.agents/skills/code-security/''',
+]
