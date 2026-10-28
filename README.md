@@ -54,9 +54,24 @@ This also links `~/.claude/skills` to `.agents/skills`.
 | Local | `.config/opencode/opencode.local.jsonc` | Git-ignored provider, agent, and MCP overrides. Created from the example during installation. |
 | Local | `shell/opencode.local.zsh` | Git-ignored environment variables and secrets. Created from the example during installation. |
 
-`shell/opencode.zsh` exports the local config through `OPENCODE_CONFIG`, which OpenCode merges after the shared configuration. Restart OpenCode after changing a configuration file, agent file, or skill.
+`shell/opencode.zsh` exports the local config through `OPENCODE_CONFIG`, which OpenCode merges after the shared configuration. OpenCode V2 reloads configuration and agent files automatically; use `/reload` to force a full reload.
 
 Keep secrets in local files only. The shared Context7 configuration reads `CONTEXT7_API_KEY` from the environment.
+
+### Orchestrator agents
+
+Select `orchestrator` explicitly for delegated implementation and review. Its workers are
+`orchestrator-implementer`, `orchestrator-implementer-fast`, `orchestrator-reviewer`,
+and `orchestrator-reviewer-deep`. They are hidden from the general subagent catalog
+and denied by shared permissions; only `orchestrator` grants permission to launch
+them. Built-in agents such as `build`, `plan`, `general`, and `explore` keep their
+normal behavior and do not select these workers.
+
+Set `agents.<id>.model` directly to a `provider/model` string in
+`.config/opencode/opencode.local.jsonc` for each agent's machine-specific model.
+Shared agent files do not pin models; workers without a local model setting inherit
+the parent session's model. Keep local/project permission overrides from granting
+other agents access to `orchestrator-*` workers.
 
 ## Skills
 

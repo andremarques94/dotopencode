@@ -1,24 +1,16 @@
 ---
 description: Reviews an implementer's diff against a task's acceptance criteria. Read-only, invoked by the orchestrator after each implementation wave.
 mode: subagent
-model: github-copilot/kimi-k2.7-code
-temperature: 0.1
-steps: 12
-permission:
-  edit: deny
-  bash:
-    "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git status*": allow
-  task: deny
-  skill:
-    "*": deny
-    "backend-development": allow
-    "nestjs-best-practices": allow
-    "codebase-design": allow
-    "deslop": allow
-    "code-security": allow
+hidden: true
+steps: 24
+permissions:
+  - { action: edit, resource: "*", effect: deny }
+  - { action: shell, resource: "*", effect: deny }
+  - { action: shell, resource: "git diff*", effect: allow }
+  - { action: shell, resource: "git log*", effect: allow }
+  - { action: shell, resource: "git status*", effect: allow }
+  - { action: subagent, resource: "*", effect: deny }
+  - { action: skill, resource: "*", effect: allow }
 ---
 
 Review the task's owned files against its acceptance criteria in PLAN.md. Read

@@ -90,6 +90,44 @@
       "sourceType": "github",
       "skillPath": "skills/code-security/SKILL.md",
       "computedHash": "56cbeeac5ccf346461e60f08fde411aa1f6e97ffed94fc83d871c2e4ce2ee4a6"
+    },
+    "agent-browser": {
+      "source": "vercel-labs/agent-browser",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/agent-browser.git",
+      "skillPath": "skills/agent-browser/SKILL.md",
+      "skillFolderHash": "82def67855a0d2aad7794207951820fa5422fdb0",
+      "installedAt": "2026-10-21T09:51:33.527Z",
+      "updatedAt": "2026-10-21T09:51:33.527Z"
+    },
+    "ui-taste": {
+      "source": "uizze.sh",
+      "sourceType": "well-known",
+      "sourceUrl": "https://uizze.sh/.well-known/agent-skills/ui-taste/SKILL.md",
+      "skillFolderHash": "",
+      "sourceBaseUrl": "https://uizze.sh/",
+      "wellKnownDigest": "sha256:120fd3e899db255454fff61b7e8c22757524ffe31101a22d19346708bd20c4b9",
+      "installedAt": "2026-10-21T10:07:28.623Z",
+      "updatedAt": "2026-10-21T10:07:28.623Z"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/anthropics/skills.git",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "skillFolderHash": "d79e2a5bb4df4a386c2adcdd9ab8709bba28c3f6",
+      "pluginName": "example-skills",
+      "installedAt": "2026-10-21T10:09:01.772Z",
+      "updatedAt": "2026-10-21T10:09:01.772Z"
+    },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+      "skillPath": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "skillFolderHash": "0b6619c11598d7ce32041044cb2e6fc6adea1efc",
+      "installedAt": "2026-10-21T10:09:26.548Z",
+      "updatedAt": "2026-10-21T10:09:26.548Z"
     }
   },
   "dismissed": {
@@ -97,16 +135,17 @@
   },
   "lastSelectedAgents": [
     "amp",
-    "antigravity",
-    "antigravity-cli",
     "cline",
     "codex",
     "cursor",
-    "deepagents",
+    "droid",
+    "fx",
     "gemini-cli",
     "github-copilot",
+    "kilo",
     "kimi-code-cli",
     "opencode",
+    "pi",
     "warp",
     "zed"
   ]

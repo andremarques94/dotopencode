@@ -4,11 +4,11 @@
   "diff_style": "auto",
   "scroll_speed": 3,
   "scroll_acceleration": {
-    "enabled": true,
+    "enabled": true
   },
   "attention": {
     "enabled": true,
     "notifications": true,
-    "sound": false,
-  },
+    "sound": false
+  }
 }
