@@ -1,0 +1,37 @@
+{
+  "theme": {
+    "name": "cursor",
+    "mode": "system"
+  },
+  "diffs": {
+    "wrap": "word",
+    "view": "auto",
+    "tree": true,
+    "single": false
+  },
+  "session": {
+    "sidebar": "auto",
+    "scrollbar": false,
+    "thinking": "hide",
+    "markdown": "source",
+    "grouping": "auto",
+    "new_location": "launch",
+    "permissions": "autoaccept",
+    "verbosity": "medium",
+    "tps": true
+  },
+  "animations": true,
+  "tabs": {
+    "enabled": true,
+    "scope": "cwd",
+    "layout": "vertical",
+    "indicators": "status",
+    "mode": "on"
+  },
+  "attention": {
+    "notifications": true
+  },
+  "terminal": {
+    "title": true
+  }
+}

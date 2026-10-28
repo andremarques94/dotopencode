@@ -1,48 +1,44 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "formatter": true,
-  "lsp": true,
-  "share": "manual",
-  "autoupdate": "notify",
-  "tool_output": {
-    "max_lines": 1000,
-    "max_bytes": 30000
-  },
-  "permission": {
-    "bash": {
-      "*": "ask",
-      "git status*": "allow",
-      "git diff*": "allow",
-      "git log*": "allow",
-      "git branch*": "allow"
-    },
-    "lsp": "allow",
-    "skill": "allow",
-    "webfetch": "allow",
-    "websearch": "allow"
-  },
+  "update": "notify",
+  "permissions": [
+    { "action": "shell", "resource": "*", "effect": "ask" },
+    { "action": "shell", "resource": "git status*", "effect": "allow" },
+    { "action": "shell", "resource": "git diff*", "effect": "allow" },
+    { "action": "shell", "resource": "git log*", "effect": "allow" },
+    { "action": "shell", "resource": "git branch*", "effect": "allow" },
+    { "action": "skill", "resource": "*", "effect": "allow" },
+    { "action": "webfetch", "resource": "*", "effect": "allow" },
+    { "action": "websearch", "resource": "*", "effect": "allow" },
+    // Only the orchestrator's agent-specific rules may launch these workers.
+    { "action": "subagent", "resource": "orchestrator-*", "effect": "deny" }
+  ],
   "mcp": {
-    "gh_grep": {
-      "type": "remote",
-      "url": "https://mcp.grep.app",
-      "enabled": false
-    },
-    "context7": {
-      "type": "remote",
-      "url": "https://mcp.context7.com/mcp",
-      "enabled": false,
-      "headers": {
-        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+    "servers": {
+      "gh_grep": {
+        "type": "remote",
+        "url": "https://mcp.grep.app",
+        "disabled": true
+      },
+      "context7": {
+        "type": "remote",
+        "url": "https://mcp.context7.com/mcp",
+        "disabled": true,
+        "headers": {
+          "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+        }
+      },
+      "chrome-devtools": {
+        "type": "local",
+        "disabled": true,
+        "command": [
+          "npx",
+          "-y",
+          "chrome-devtools-mcp@latest",
+          "--no-usage-statistics"
+        ]
       }
-    },
-    "chrome-devtools": {
-      "type": "local",
-      "enabled": false,
-      "command": [
-        "npx",
-        "-y",
-        "chrome-devtools-mcp@latest"
-      ]
     }
   }
 }

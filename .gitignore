@@ -16,6 +16,7 @@ shell/opencode.local.zsh
 !.env.example
 
 # Local/generated data
+.config/opencode/service.json
 .local/
 .cache/
 .tmp/

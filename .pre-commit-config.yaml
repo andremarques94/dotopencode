@@ -9,6 +9,7 @@ repos:
       - id: trailing-whitespace
       - id: mixed-line-ending
       - id: check-added-large-files
+        exclude: '^\.agents/skills/ui-ux-pro-max/data/(google-fonts\.csv|phosphor-icons-upstream\.json)$'
 
   - repo: https://github.com/gitleaks/gitleaks
     rev: v8.28.0
