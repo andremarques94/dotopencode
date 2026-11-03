@@ -2,17 +2,73 @@
   "$schema": "https://opencode.ai/config.json",
   "formatter": true,
   "update": "notify",
+  // Run only one TypeScript server at a time; flip `disabled` to switch.
+  "lsp": {
+    "typescript": {
+      "disabled": false,
+      "command": [
+        "typescript-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".ts",
+        ".tsx",
+        ".js",
+        ".jsx",
+        ".mjs",
+        ".cjs",
+        ".mts",
+        ".cts"
+      ]
+    }
+  },
   "permissions": [
-    { "action": "shell", "resource": "*", "effect": "ask" },
-    { "action": "shell", "resource": "git status*", "effect": "allow" },
-    { "action": "shell", "resource": "git diff*", "effect": "allow" },
-    { "action": "shell", "resource": "git log*", "effect": "allow" },
-    { "action": "shell", "resource": "git branch*", "effect": "allow" },
-    { "action": "skill", "resource": "*", "effect": "allow" },
-    { "action": "webfetch", "resource": "*", "effect": "allow" },
-    { "action": "websearch", "resource": "*", "effect": "allow" },
+    {
+      "action": "shell",
+      "resource": "*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "git status*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git diff*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git log*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git branch*",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "webfetch",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "websearch",
+      "resource": "*",
+      "effect": "allow"
+    },
     // Only the orchestrator's agent-specific rules may launch these workers.
-    { "action": "subagent", "resource": "orchestrator-*", "effect": "deny" }
+    {
+      "action": "subagent",
+      "resource": "orchestrator-*",
+      "effect": "deny"
+    }
   ],
   "mcp": {
     "servers": {
