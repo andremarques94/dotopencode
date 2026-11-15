@@ -1,7 +1,22 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "formatter": true,
+  "shell": "/bin/zsh",
   "update": "notify",
+  "websearch": {
+    "provider": "random",
+  },
+  "plugins": [
+    {
+      "package": "opencode-github-review-queue@latest",
+      "options": {
+        "intervalMs": 60000,
+        "timeoutMs": 20000,
+        "maxBackoffMs": 900000,
+        "notifications": true
+      }
+    }
+  ],
   // Run only one TypeScript server at a time; flip `disabled` to switch.
   "lsp": {
     "typescript": {
